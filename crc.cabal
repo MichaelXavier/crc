@@ -1,8 +1,8 @@
 name:                crc
-version:             0.0.0
+version:             0.0.1.1
 synopsis:            Implements various Cyclic Redundancy Checks (CRC)
-description:         Please see README.md
-homepage:            http://github.com/MichaelXavier/crc#readme
+description:         ByteString-based Cyclic Redundancy Checks
+homepage:            http://github.com/MichaelXavier/crc
 license:             MIT
 license-file:        LICENSE
 author:              Michael Xavier

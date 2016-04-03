@@ -4,4 +4,4 @@
 
 ## Status
 
-Hold off, not quite done.
+[![Hackage](https://img.shields.io/hackage/v/crc.svg)]()
