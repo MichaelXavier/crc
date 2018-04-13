@@ -1,4 +1,4 @@
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE TypeFamilyDependencies #-}
 module Data.Digest.CRC
     ( CRC(..)
     , digest
@@ -14,7 +14,7 @@ import           Data.Vector.Unboxed as V
 
 
 class CRC a where
-  type CRCWord a
+  type CRCWord a = r | r -> a
   initCRC :: a
   crcWord :: a -> CRCWord a
   updateDigest :: a -> ByteString -> a
