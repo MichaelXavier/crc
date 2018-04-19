@@ -43,7 +43,7 @@ test-suite test
                      , crc
                      , tasty
                      , tasty-golden
-                     , conduit
+                     , conduit >= 1.2.8
                      , conduit-extra
                      , bytestring
                      , resourcet

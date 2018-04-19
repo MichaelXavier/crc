@@ -48,12 +48,12 @@ digestGolden :: forall a. (CRC a, HexBuilder (CRCWord a)) => FilePath -> Proxy a
 digestGolden f _ = goldenVsString f goldenPath mkDigests
   where
     goldenPath = "test/data/" <> f
-    mkDigests = runResourceT $
-      sourceFile "test/data/inputs" =$=
-        CB.lines =$=
-        CL.map digest =$=
-        CL.map (toHex :: a -> ByteString) =$=
-        CL.map toHexLine $$
+    mkDigests = runResourceT $ runConduit $
+      sourceFile "test/data/inputs" .|
+        CB.lines .|
+        CL.map digest .|
+        CL.map (toHex :: a -> ByteString) .|
+        CL.map toHexLine .|
         sinkLbs
 
 
