@@ -1,5 +1,5 @@
 name:                crc
-version:             0.0.1.1
+version:             0.1.0.0
 synopsis:            Implements various Cyclic Redundancy Checks (CRC)
 description:         ByteString-based Cyclic Redundancy Checks
 homepage:            http://github.com/MichaelXavier/crc
@@ -10,7 +10,8 @@ maintainer:          michael@michaelxavier.net
 copyright:           2015 Michael Xavier
 category:            Web
 build-type:          Simple
--- extra-source-files:
+extra-source-files:
+  changelog.md
 cabal-version:       >=1.10
 
 flag lib-Werror
