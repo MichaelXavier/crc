@@ -14,7 +14,7 @@ import           Data.ByteString.Lazy         (toStrict)
 import           Data.Conduit
 import           Data.Conduit.Binary          as CB
 import           Data.Conduit.List            as CL
-import           Data.Monoid
+import           Data.Monoid                  as M
 import           Data.Proxy
 import           Data.Word
 import           Test.Tasty
@@ -47,7 +47,7 @@ testSuite = testGroup "crc"
 digestGolden :: forall a. (CRC a, HexBuilder (CRCWord a)) => FilePath -> Proxy a -> TestTree
 digestGolden f _ = goldenVsString f goldenPath mkDigests
   where
-    goldenPath = "test/data/" <> f
+    goldenPath = "test/data/" M.<> f
     mkDigests = runResourceT $ runConduit $
       sourceFile "test/data/inputs" .|
         CB.lines .|
