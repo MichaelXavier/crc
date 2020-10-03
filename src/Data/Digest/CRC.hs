@@ -7,6 +7,7 @@
 module Data.Digest.CRC
     ( CRC(..)
     , digest
+    , digestWithInitial
     ) where
 
 
@@ -32,3 +33,6 @@ class CRC a where
 
 digest :: CRC a => ByteString -> a
 digest = updateDigest initCRC
+
+digestWithInitial :: CRC a => a -> ByteString -> a
+digestWithInitial = updateDigest
