@@ -1,4 +1,4 @@
-0.1.1.0
+0.1.1.1
 * Export `digestWithInitial`[#3](https://github.com/MichaelXavier/crc/pull/3)
 
 0.1.0.0
