@@ -71,7 +71,7 @@ benchmark bench
   if flag(lib-Werror)
     ghc-options: -Werror
 
-  ghc-options: -Wall
+  ghc-options: -Wall -threaded -rtsopts -with-rtsopts=-K50M
 
 
 source-repository head

@@ -27,12 +27,12 @@ instance CRC CRC16 where
 
 -------------------------------------------------------------------------------
 updateDigest16 :: CRC16 -> ByteString -> CRC16
-updateDigest16 crc = BS.foldl go crc
+updateDigest16 crc = BS.foldl' go crc
   where
     go (CRC16 crc') b8 =
       let idx = fromIntegral (crc' `xor` b16) .&. 0xff
           b16 = fromIntegral b8
-      in CRC16 ((table ! idx) `xor` ((crc' `shiftR` 8) .&. 0x00ffff))
+      in CRC16 ((table `V.unsafeIndex` idx) `xor` ((crc' `shiftR` 8) .&. 0x00ffff))
 
 
 -------------------------------------------------------------------------------
