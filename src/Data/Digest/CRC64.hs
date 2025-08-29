@@ -29,12 +29,12 @@ instance CRC CRC64 where
 
 -------------------------------------------------------------------------------
 updateDigest64 :: CRC64 -> ByteString -> CRC64
-updateDigest64 crc = BS.foldl go crc
+updateDigest64 crc = BS.foldl' go crc
   where
     go (CRC64 crc') b8 =
       let idx = fromIntegral (crc' `xor` b64) .&. 0xff
           b64 = fromIntegral b8
-      in CRC64 (((table ! idx) `xor` (crc' `shiftR` 8)) .&. 0xffffffffffffffff)
+      in CRC64 (((table `V.unsafeIndex` idx) `xor` (crc' `shiftR` 8)) .&. 0xffffffffffffffff)
 
 
 -------------------------------------------------------------------------------

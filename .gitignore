@@ -2,3 +2,5 @@
 *.hi
 *.o
 stack.yaml.lock
+dist-newstyle
+cabal.project.local*

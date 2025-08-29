@@ -29,13 +29,13 @@ instance CRC CRC32 where
 
 -------------------------------------------------------------------------------
 updateDigest32 :: CRC32 -> ByteString -> CRC32
-updateDigest32 crc = xorFinal . BS.foldl go crc
+updateDigest32 crc = xorFinal . BS.foldl' go crc
   where
     xorFinal (CRC32 x) = CRC32 (x `xor` 0xffffffff)
     go (CRC32 crc') b8 =
       let idx = fromIntegral (crc' `xor` b32) .&. 0xff
           b32 = fromIntegral b8
-      in CRC32 (((crc' `shiftR` 8) .&. 0x00ffffff) `xor` (table ! idx))
+      in CRC32 (((crc' `shiftR` 8) .&. 0x00ffffff) `xor` (table `V.unsafeIndex` idx))
 
 
 -------------------------------------------------------------------------------
